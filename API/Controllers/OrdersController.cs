@@ -7,12 +7,14 @@ using Core.Interfaces;
 using Core.Specifications;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Text.Json;
 
 namespace API.Controllers;
 
 [Authorize]
 public class OrdersController(ICartService cartService, IUnitOfWork unit) : BaseApiController
 {
+    [HttpPost]
     public async Task<ActionResult<Order>> CreateOrder(CreateOrderDto orderDto)
     {
         var email = User.GetEmail();
