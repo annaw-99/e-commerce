@@ -1,10 +1,29 @@
-<mat-form-field appearance="outline" class="w-full mb-4">
+<!-- <mat-form-field appearance="outline" class="w-full mb-4">
     <mat-label>{{label}}</mat-label>
-    <input [formControl]="control" type={{type}} placeholder={{label}} matInput />
+    <input [formControl]="control" type={{type}} placeholder={{label}} matInput/>
     @if (control.hasError('required')) {
         <mat-error>{{label}} is required</mat-error>
     }
     @if (control.hasError('email')) {
         <mat-error>Email is invalid</mat-error>
     }
-</mat-form-field>
+</mat-form-field> -->
+
+<div class="mb-4">
+    <input
+      [formControl]="control"
+      type={{type}}
+      placeholder={{label}}
+      class="w-full text-sm border border-black px-2 py-1 focus:outline-none focus:ring-1 
+      focus:ring-black"/>
+  
+    @if (control.invalid && (control.touched || control.dirty)) {
+      @if (control.hasError('required')) {
+        <mat-error class="text-xs">{{label}} is required</mat-error>
+      }
+      @if (control.hasError('email')) {
+        <mat-error class="text-xs">Email is invalid</mat-error>
+      }
+    }
+</div>
+  

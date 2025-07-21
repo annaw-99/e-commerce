@@ -6,6 +6,7 @@
 
 $customTheme: mat.define-theme();
 
+
 @include mat.core();
 
 .custom-theme {
@@ -13,7 +14,7 @@ $customTheme: mat.define-theme();
 
     // override the button styles
     .mdc-button, .mdc-raised-button, .mdc-stroked-button, .mdc-flat-button {
-        @apply rounded-md
+        @apply rounded-none
     }
 }
 
@@ -22,12 +23,12 @@ $customTheme: mat.define-theme();
 }
 
 .text-primary {
-    color: #7d00fa;
+    color: #374151;
 }
 
-button.match-input-height {
-    height: var(--mat-form-field-container-height) !important;
-}
+// button.match-input-height {
+//     height: var(--mat-form-field-container-height) !important;
+// }
 
 .mdc-notched-outline__notch {
     border-right-style: none !important;
@@ -44,3 +45,59 @@ button.match-input-height {
     --mat-snack-bar-button-color: #fff;
     --mdc-snackbar-supporting-text-color: #fff;
 }
+
+:root {
+    --mdc-theme-primary: black;
+    --mdc-outlined-text-field-focus-outline-color: black;
+}
+
+.mat-mdc-option.mdc-list-item--selected {
+    background-color: #c5c5c5 !important; 
+}
+
+.mat-mdc-option.mdc-list-item--selected:hover {
+    background-color: #e5e7eb !important; 
+}
+  
+.mat-mdc-option:hover {
+    background-color: #e5e7eb !important;
+}
+
+.mat-mdc-option {
+    background-color: #f9fafb !important; 
+    color: #000000 !important;       
+}
+
+.mat-mdc-option.mdc-list-item {
+    font-size: 12px;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+    min-height: unset !important;
+    height: 28px !important;
+}
+
+.mat-mdc-select-panel {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    margin: 0 !important;
+}
+
+.mat-mdc-paginator-page-size-select .mdc-text-field {
+    height: 32px !important;
+    min-height: 32px !important;
+    padding: 0 !important;
+}
+  
+.mat-mdc-paginator-page-size-select .mat-mdc-form-field-infix {
+    padding: 0 8px !important;
+    min-height: 32px !important;
+}
+  
+.mat-mdc-paginator-page-size-select .mat-mdc-select-trigger {
+    height: 32px !important;
+    font-size: 0.75rem !important;
+    align-items: center;
+}
+  

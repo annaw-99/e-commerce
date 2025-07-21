@@ -4,11 +4,12 @@ import { CartItemComponent } from "./cart-item/cart-item.component";
 import { OrderSummaryComponent } from "../../shared/components/order-summary/order-summary.component";
 import { EmptyStateComponent } from "../../shared/components/empty-state/empty-state.component";
 import { Router } from '@angular/router';
+import { MatDivider } from "@angular/material/divider";
 
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [CartItemComponent, OrderSummaryComponent, EmptyStateComponent],
+  imports: [CartItemComponent, OrderSummaryComponent, EmptyStateComponent, MatDivider],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.scss'
 })

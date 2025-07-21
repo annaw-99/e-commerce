@@ -1,50 +1,61 @@
-<header class="border-b shadow-md p-3 w-full max-h-20 fixed top-0 z-50 bg-white">
-    <div class="flex align-middle items-center justify-between max-w-screen-2xl mx-auto">
-        <img routerLink="/" src="/images/logo.png" alt="app logo" class="max-h-16">
-        <nav class="flex gap-3 my-2 uppercase text-lg">
-            <a routerLink="/" 
+<header class="border-b w-full px-4 h-10 fixed top-0 z-50 bg-white">
+    <div class="flex items-center justify-between max-w-screen-2xl mx-auto h-full">
+        <img routerLink="/shop" src="/images/logo.png" alt="app logo" class="max-h-6 cursor-pointer">
+        <nav class="flex gap-6 my-2 text-lg">
+            <!-- <a routerLink="/" 
                 routerLinkActive="active"
-                [routerLinkActiveOptions]="{exact: true}">Home</a>
-            <a routerLink="/shop" routerLinkActive="active">Shop</a>
-            <a routerLink="/test-error" routerLinkActive="active">Errors</a>
-            <a *appIsAdmin routerLink="/admin" routerLinkActive="active">Admin</a>
+                [routerLinkActiveOptions]="{exact: true}">Home</a> -->
+            <!-- <a routerLink="/shop" routerLinkActive="active">Shop</a> -->
+            <!-- <a routerLink="/test-error" routerLinkActive="active">Errors</a> -->
+            <!-- <a *appIsAdmin routerLink="/admin" routerLinkActive="active">Admin</a> -->
 
         </nav>
-        <div class="flex gap-3 align-middle">
-            <a routerLink="/cart" routerLinkActive="active" matBadge="{{cartService.itemCount()}}" 
-            matBadgeSize="large" class="custom-badge mt-2 mr-2">
-                <mat-icon>shopping_cart</mat-icon>
-            </a>
+        <div class="flex gap-3 items-center">
             @if (accountService.currentUser()) {
-                <button mat-button [matMenuTriggerFor]="menu">
-                    <mat-icon>arrow_drop_down</mat-icon>
-                    <span>{{accountService.currentUser()?.email}}</span>
+                <a *appIsAdmin routerLink="/admin" routerLinkActive="active" class="text-xs">
+                    Manage Orders
+                </a>
+                <button mat-flat-button [matMenuTriggerFor]="menu" class="mr-4 p-0 min-w-0 h-auto bg-white hover:text-gray-500">
+                    <!-- <mat-icon class="text-sm">arrow_drop_down</mat-icon> -->
+                    <span class="text-xs text-black hover:bg-none">{{accountService.currentUser()?.email}}</span>
                 </button>
             } @else {
-                <button routerLink="/account/login" mat-stroked-button>Login</button>
-                <button routerLink="/account/register" mat-stroked-button>Register</button>
+                <button routerLink="/account/login" class="text-xs uppercase">Login</button>
+                <button routerLink="/account/register" class="text-xs mr-4 uppercase">Register</button>
             }
-            
+            <a routerLink="/cart" routerLinkActive="active" class="group flex items-center">
+                <div class="flex items-center">
+                    <mat-icon
+                    class="text-sm max-h-4 max-w-4 mb-0.5 group-[.active]:text-gray-500
+                    group-hover:text-gray-500 transition-colors">
+                    shopping_cart
+                    </mat-icon>
+                    <span class="text-xs rounded-full min-w-[4px] text-center
+                    group-[.active]:text-gray-500 group-hover:text-gray-500">
+                    {{ cartService.itemCount() }}
+                    </span>
+                </div>
+            </a>
+
         </div>
     </div>
 </header>
 
 @if (busyService.loading) {
-    <mat-progress-bar mode="indeterminate" class="fixed top-20 z-50"></mat-progress-bar>
+    <mat-progress-bar mode="indeterminate" class="fixed top-10 z-50" 
+    style="--mdc-linear-progress-active-indicator-color: black !important; --mdc-linear-progress-track-color: #e5e7eb !important;">
+    </mat-progress-bar>
 }
 
-<mat-menu #menu="matMenu">
-    <button mat-menu-item class="px-5" routerLink="/cart">
-        <mat-icon>shopping_cart</mat-icon>
-        My cart
+<mat-menu #menu="matMenu" class="bg-white">
+    <!-- <button mat-menu-item class="px-5" routerLink="/cart">
+        <span class="text-xs">My Cart</span>
+    </button> -->
+    <button mat-menu-item class="px-5 min-h-4" routerLink="/orders">
+        <span class="text-xs">My Orders</span>
     </button>
-    <button mat-menu-item class="px-5" routerLink="/orders">
-        <mat-icon>history</mat-icon>
-        My orders
-    </button>
-    <mat-divider></mat-divider>
-    <button mat-menu-item class="px-5" (click)="logout()">
-        <mat-icon>logout</mat-icon>
-        Logout
+    <!-- <mat-divider></mat-divider> -->
+    <button mat-menu-item class="px-5 min-h-4" (click)="logout()">
+        <span class="text-xs">Logout</span>
     </button>
 </mat-menu>

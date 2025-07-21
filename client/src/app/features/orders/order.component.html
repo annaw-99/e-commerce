@@ -1,11 +1,11 @@
-<div class="mx-auto mt-32">
-    <h2 class="font-semibold text-2xl mb-6 text-center">My orders</h2>
+<div class="mx-20 mt-12">
+    <h2 class="font-semibold text-2xl mb-6 text-start uppercase">My Orders</h2>
     <div class="flex flex-col">
         <div class="w-full">
             <table class="min-w-full divide-y divide-gray-200 cursor-pointer">
                 <thead class="bg-gray-50">
                     <tr class="uppercase text-gray-600 text-sm">
-                        <th class="text-center px-6 py-3">Order</th>
+                        <th class="text-center px-6 py-3">Order No.</th>
                         <th class="text-left">Date</th>
                         <th class="text-left">Total</th>
                         <th class="text-left">Status</th>
@@ -14,10 +14,10 @@
                 <tbody class="bg-white divide-y divide-gray-200">
                     @for (order of orders; track order.id) {
                         <tr routerLink="/orders/{{order.id}}" class="hover:bg-gray-100">
-                            <th class="px-6 py-3"># {{order.id}}</th>
-                            <td>{{order.orderDate | date: 'medium'}}</td>
-                            <td>{{order.total | currency}}</td>
-                            <td>{{order.status}}</td>
+                            <th class="px-6 py-3 text-sm items-start"># {{order.id}}</th>
+                            <td class="text-sm">{{order.orderDate | date: 'medium'}}</td>
+                            <td class="text-sm">{{order.total | currency}}</td>
+                            <td class="text-sm">{{order.status}}</td>
                         </tr>
                     }
                 </tbody>

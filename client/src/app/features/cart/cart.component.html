@@ -1,6 +1,7 @@
-<section>
+<section class="px-4 py-2">
     @if (cartService.cart()?.items?.length! > 0) {
-        <div class="flex w-full items-start gap-6 mt-12">
+        <h1 class="text-2xl font-bold text-primary uppercase">Shopping Cart</h1>
+        <!-- <div class="flex w-full items-start gap-6 mt-12">
             <div class="w-3/4">
                 @for (item of cartService.cart()?.items; track item.productId) {
                     <app-cart-item [item]="item"></app-cart-item>
@@ -9,6 +10,18 @@
             <div class="w-1/4">
                 <app-order-summary></app-order-summary>
             </div>
+        </div> -->
+        <div class="w-full gap-6 mt-6">
+            <div>
+                @for (item of cartService.cart()?.items; track item.productId) {
+                    <mat-divider class="border-gray-100"></mat-divider>
+                    <app-cart-item [item]="item"></app-cart-item>
+                }
+            </div>
+        </div>
+        <mat-divider class="border-gray-100"></mat-divider>
+        <div class="flex w-full justify-end">
+            <app-order-summary class="w-80"></app-order-summary>
         </div>
     } @else {
         <app-empty-state 

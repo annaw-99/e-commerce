@@ -14,6 +14,7 @@ import { ShopParams } from '../../shared/models/shopParams';
 import { Pagination } from '../../shared/models/pagination';
 import { FormsModule } from '@angular/forms';
 import { EmptyStateComponent } from "../../shared/components/empty-state/empty-state.component";
+import { MatDivider } from "@angular/material/divider";
 
 @Component({
   selector: 'app-shop',
@@ -29,24 +30,28 @@ import { EmptyStateComponent } from "../../shared/components/empty-state/empty-s
     MatListOption,
     MatPaginator,
     FormsModule,
-    EmptyStateComponent
+    EmptyStateComponent,
+    MatDivider
 ],
   templateUrl: './shop.component.html',
   styleUrl: './shop.component.scss'
 })
 export class ShopComponent implements OnInit{
-  private shopService = inject(ShopService);
+  // private shopService = inject(ShopService);
+  shopService = inject(ShopService);
   private dialogService = inject(MatDialog);
   title = 'client';
   products?: Pagination<Product>;
   sortOptions = [
-    {name: 'Alphabetical', value: 'name'},
+    {name: 'Name (A-Z)', value: 'name'},
     {name: 'Price: Low-High', value: 'priceAsc'},
     {name: 'Price: High-Low', value: 'priceDesc'}
   ]
 
   shopParams = new ShopParams();
   pageSizeOptions = [5,10,15,20];
+
+  selectedSort = this.shopParams.sort;
 
   ngOnInit(): void {
     this.intitializeShop();
@@ -81,13 +86,41 @@ export class ShopComponent implements OnInit{
     this.getProducts();
   }
 
-  onSortChange(event: MatSelectionListChange) {
-    const selectedOption = event.options[0];
-    if (selectedOption) {
-      this.shopParams.sort = selectedOption.value;
+  // onSortChange(event: MatSelectionListChange) {
+  //   const selectedOption = event.options[0];
+  //   if (selectedOption) {
+  //     this.shopParams.sort = selectedOption.value;
+  //     this.shopParams.pageNumber = 1;
+  //     this.getProducts();
+  //   }
+  // }
+
+  onSortChange(value: string) {
+    if (value) {
+      this.shopParams.sort = value;
       this.shopParams.pageNumber = 1;
       this.getProducts();
     }
+  }
+
+  toggleBrand(brand: string) {
+    if (this.shopParams.brands.includes(brand)) {
+        this.shopParams.brands = this.shopParams.brands.filter(b => b !== brand);
+    } else {
+        this.shopParams.brands.push(brand);
+    }
+    this.shopParams.pageNumber = 1;
+    this.getProducts();
+  }
+
+  toggleType(type: string) {
+    if (this.shopParams.types.includes(type)) {
+        this.shopParams.types = this.shopParams.types.filter(t => t !== type);
+    } else {
+        this.shopParams.types.push(type);
+    }
+    this.shopParams.pageNumber = 1;
+    this.getProducts();
   }
 
   openFiltersDialog() {
