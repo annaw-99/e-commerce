@@ -24,7 +24,8 @@ public class StoreContextSeed
 
         var path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
-        if (!context.Products.Any())
+        // if (!context.Products.Any())
+        if (true)
         {
             var productsData = await File
             .ReadAllTextAsync(path + @"/Data/SeedData/products.json");
