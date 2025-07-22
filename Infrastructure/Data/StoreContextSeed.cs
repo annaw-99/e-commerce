@@ -25,28 +25,41 @@ public class StoreContextSeed
         var path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
         // if (!context.Products.Any())
-        if (true)
+        // {
+        //     var productsData = await File
+        //     .ReadAllTextAsync(path + @"/Data/SeedData/products.json");
+
+        //     var products = JsonSerializer.Deserialize<List<Product>>(productsData);
+
+        //     if (products == null) return;
+
+        //     context.Products.AddRange(products);
+
+        //     await context.SaveChangesAsync();
+        // }
+        
+        if (true) // Force seeding every time
         {
-            var productsData = await File
-            .ReadAllTextAsync(path + @"/Data/SeedData/products.json");
-
+            // Clear existing products first
+            context.Products.RemoveRange(context.Products);
+            await context.SaveChangesAsync();
+            
+            // Add new products
+            var productsData = await File.ReadAllTextAsync(path + @"/Data/SeedData/products.json");
             var products = JsonSerializer.Deserialize<List<Product>>(productsData);
-
             if (products == null) return;
-
             context.Products.AddRange(products);
-
             await context.SaveChangesAsync();
         }
         
-        if(!context.DeliveryMethods.Any())
+        if (!context.DeliveryMethods.Any())
         {
             var dmData = await File
             .ReadAllTextAsync(path + @"/Data/SeedData/delivery.json");
 
             var methods = JsonSerializer.Deserialize<List<DeliveryMethod>>(dmData);
 
-            if(methods == null) return;
+            if (methods == null) return;
 
             context.DeliveryMethods.AddRange(methods);
 
