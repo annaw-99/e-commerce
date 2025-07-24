@@ -2,28 +2,27 @@
 
 > A modern full-stack e-commerce application built with .NET 8 and Angular 18
 
-This is a comprehensive e-commerce platform that provides a complete shopping experience with user authentication, product management, shopping cart functionality, order processing, and payment integration.
-
-### ✨ Features
-- for customers: browse products with real-time inventory information and place orders remotely from your device.
-- for administrators: manage product inventory, process orders, and get real-time updates.
+This is a e-commerce platform that provides a complete shopping experience with user authentication, product management, shopping cart functionality, order processing, and payment integration.
 
 ### 🙌🏻 Testing
+
 To view the admin page, use the credentials below: <br>
 - Email = `admin@test.com`
 - Password = `Pa$$w0rd`
 
+For general users, register an account or login using the credentials below:
+- Email = `tom@test.com`
+- Password = `Pa$$w0rd`
+
 ### 🛠️ Tech Stack
 
-- **Backend**: ASP.NET Core 8, Entity Framework Core, SQL Server
 - **Frontend**: Angular 18, TypeScript, Tailwind CSS
-- **UI Components**: Angular Material Design
+- **Backend**: ASP.NET Core 8, Entity Framework Core, SQL Server
+- **UI Components**: Angular Material UI
 - **Authentication**: ASP.NET Core Identity with JWT
-- **Database**: SQL Server with Entity Framework Core
-- **Caching**: Redis for session and response caching
-- **Payment**: Stripe integration for secure payments
-- **Real-time**: SignalR for live notifications
-- **Infrastructure**: Docker and Docker Compose
+- **Caching**: Redis (for session and response caching)
+- **Payment**: Stripe
+- **Real-time Notifications**: SignalR
 
 ### 👩🏻‍💻 Getting Started
 To run this project locally:
@@ -64,7 +63,6 @@ To run this project locally:
 
 5. Start the development servers
     ```bash
-    # API (in one terminal)
     cd API
     dotnet run
     
@@ -81,11 +79,7 @@ To run this project locally:
 - Advanced analytics dashboard for sales and customer behavior
 - Inventory management with low stock alerts
 - Email notifications for order confirmations and status updates
-- Multi-language support and internationalization
-- Mobile application using React Native or Flutter
-- Advanced search with Elasticsearch integration
-- AI-powered product recommendations
-- Customer loyalty program with points system
+
 
 ### ☎️ Contact
 Feel free to reach out if you have any questions or suggestions!
