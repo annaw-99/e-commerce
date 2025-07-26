@@ -100,3 +100,8 @@ $customTheme: mat.define-theme();
     font-size: 0.75rem !important;
     align-items: center;
 }
+
+// ::ng-deep .mat-mdc-progress-spinner .mdc-circular-progress__determinate-circle,
+// ::ng-deep .mat-mdc-progress-spinner .mdc-circular-progress__indeterminate-circle-graphic {
+//   stroke: white !important;
+// }

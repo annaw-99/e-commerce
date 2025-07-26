@@ -2,7 +2,7 @@
     <section class="bg-white py-16">
         <div class="mx-auto max-w-2xl px-4">
             <h2 class="font-semibold text-2xl mb-2 uppercase">Thanks for your fake order!</h2>
-            <p class="text-gray-500 mb-8">Your order
+            <p class="text-gray-500 mb-8 text-sm">Your order
             <span class="font-medium text-sm">
                 #{{order.id}}
             </span>
@@ -37,8 +37,10 @@
                 </dl>
             </div>
             <div class="flex items-center space-x-4">
-                <button routerLink="/orders/{{order.id}}" mat-flat-button class="bg-black text-white">View your order</button>
-                <button routerLink="/shop" mat-stroked-button class="text-black">Continue shopping</button>
+                <button routerLink="/orders/{{order.id}}" mat-flat-button class="bg-black text-white hover:bg-gray-500">View your order</button>
+                <!-- <button routerLink="/shop" mat-stroked-button class="text-black hover:bg-gray-500">Continue shopping</button> -->
+                <button routerLink="/shop" mat-flat-button class="border border-black border-solid text-black bg-white hover:bg-gray-100">Continue Shopping</button>
+
             </div>
         </div>
     </section>
@@ -46,17 +48,18 @@
     <!-- <section *ngIf="!signalrService.orderSignal()" class="bg-white py-16"> -->
     <section class="bg-white py-16">
         <div class="mx-auto max-w-2xl px-4">
-            <h2 class="font-semibold text-2xl mb-2">Order processing... please wait</h2>
+            <h2 class="font-semibold text-2xl mb-2 uppercase">Order processing... please wait</h2>
     
             <div class="space-y-2 rounded-lg border border-gray-100 bg-gray-50 p-6 mb-8">
                 <div class="flex flex-col justify-center items-center">
-                    <mat-spinner diameter="30"></mat-spinner>
-                    <p class="text-xl">Loading order...</p>
-                    <span>Your payment has been received.  We are creating the order.</span>
+                    <mat-spinner diameter="30" style="color: white;"></mat-spinner>
+                    <p class="text-md mt-1">Loading order...</p>
+                    <span class="text-sm">Your payment has been received.  We are creating the order.</span>
                 </div>
             </div>
             <div class="flex items-center space-x-4">
-                <button routerLink="/shop" mat-stroked-button>Continue shopping</button>
+                <button routerLink="/shop" mat-flat-button class="text-black bg-white hover:bg-gray-100"
+                style="border: 1px solid black !important;">Continue shopping</button>
             </div>
         </div>
     </section>

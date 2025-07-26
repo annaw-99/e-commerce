@@ -1,17 +1,17 @@
 <div class="mt-4 w-full">
-    <h4 class="text-lg font-semibold">Billing and delivery information</h4>
+    <h4 class="text-md font-semibold uppercase">Billing and Delivery Information</h4>
     <dl>
-        <dt class="font-medium">Shipping address</dt>
-        <dd class="mt-1 text-gray-500">{{confirmationToken?.shipping | address}}</dd>
-        <dt class="font-medium">Payment details</dt>
-        <dd class="mt-1 text-gray-500">{{confirmationToken?.payment_method_preview | paymentCard}}</dd>
+        <dt class="font-medium text-sm">Shipping address</dt>
+        <dd class="mt-1 text-gray-500 text-sm">{{confirmationToken?.shipping | address}}</dd>
+        <dt class="font-medium text-sm">Payment details</dt>
+        <dd class="mt-1 text-gray-500 text-sm">{{confirmationToken?.payment_method_preview | paymentCard}}</dd>
     </dl>
 </div>
 
 <div class="mt-6 mx-auto">
     <div class="border-b border-gray-200">
         <table class="w-full text-center">
-            <tbody class="divide-y divide-gray-200">
+            <tbody class="divide-y divide-gray-200 text-sm">
                 @for (item of cartService.cart()?.items; track item.productId) {
                     <tr>
                         <td class="py-4">

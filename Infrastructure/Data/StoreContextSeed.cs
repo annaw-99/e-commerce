@@ -24,33 +24,33 @@ public class StoreContextSeed
 
         var path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
-        // if (!context.Products.Any())
-        // {
-        //     var productsData = await File
-        //     .ReadAllTextAsync(path + @"/Data/SeedData/products.json");
-
-        //     var products = JsonSerializer.Deserialize<List<Product>>(productsData);
-
-        //     if (products == null) return;
-
-        //     context.Products.AddRange(products);
-
-        //     await context.SaveChangesAsync();
-        // }
-        
-        if (true) // Force seeding every time
+        if (!context.Products.Any())
         {
-            // Clear existing products first
-            context.Products.RemoveRange(context.Products);
-            await context.SaveChangesAsync();
-            
-            // Add new products
-            var productsData = await File.ReadAllTextAsync(path + @"/Data/SeedData/products.json");
+            var productsData = await File
+            .ReadAllTextAsync(path + @"/Data/SeedData/products.json");
+
             var products = JsonSerializer.Deserialize<List<Product>>(productsData);
+
             if (products == null) return;
+
             context.Products.AddRange(products);
+
             await context.SaveChangesAsync();
         }
+        
+        // if (true) // Force seeding every time
+        // {
+        //     // Clear existing products first
+        //     context.Products.RemoveRange(context.Products);
+        //     await context.SaveChangesAsync();
+            
+        //     // Add new products
+        //     var productsData = await File.ReadAllTextAsync(path + @"/Data/SeedData/products.json");
+        //     var products = JsonSerializer.Deserialize<List<Product>>(productsData);
+        //     if (products == null) return;
+        //     context.Products.AddRange(products);
+        //     await context.SaveChangesAsync();
+        // }
         
         if (!context.DeliveryMethods.Any())
         {

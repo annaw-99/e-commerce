@@ -1,0 +1,42 @@
+::ng-deep .mat-stepper-horizontal .mat-step-header .mat-step-icon.mat-step-icon-state-number {
+    background-color: #9ca3af !important;
+    color: white !important;
+}
+  
+::ng-deep .mat-stepper-horizontal .mat-step-header .mat-step-icon.mat-step-icon-selected {
+    background-color: #000000 !important;
+    color: white !important;
+}
+  
+::ng-deep .mat-stepper-horizontal .mat-step-header .mat-step-icon:not(.mat-step-icon-state-number) {
+    background-color: #000000 !important;
+    color: white !important;
+}
+
+::ng-deep .mat-mdc-progress-spinner .mdc-circular-progress__determinate-circle,
+::ng-deep .mat-mdc-progress-spinner .mdc-circular-progress__indeterminate-circle-graphic {
+    stroke: white !important;
+}
+
+::ng-deep .mdc-radio .mdc-radio__outer-circle {
+    border-color: black !important;
+}
+  
+::ng-deep .mdc-radio .mdc-radio__inner-circle {
+    border-color: black !important;
+}
+  
+::ng-deep .mdc-radio--checked .mdc-radio__outer-circle {
+    border-color: black !important;
+}
+  
+::ng-deep .mdc-radio--checked .mdc-radio__inner-circle {
+    border-color: black !important;
+    background-color: black !important;
+}
+
+::ng-deep .mat-mdc-radio-button {
+    --mat-radio-checked-ripple-color: #9ca3af !important;
+    --mat-radio-ripple-color: #9ca3af !important;
+  }
+  
